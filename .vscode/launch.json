@@ -6,6 +6,13 @@
         "configurations": [
                 {
                         "type": "java",
+                        "name": "Launch InterfaceConsola",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia.InterfaceConsola",
+                        "projectName": "dam_prog_ev1_all_4b75a6e6"
+                },
+                {
+                        "type": "java",
                         "name": "Launch Current File",
                         "request": "launch",
                         "mainClass": "${file}"

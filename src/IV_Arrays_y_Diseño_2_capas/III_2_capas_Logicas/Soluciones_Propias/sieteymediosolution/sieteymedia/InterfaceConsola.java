@@ -61,12 +61,14 @@ public class InterfaceConsola {
 
   public void jugar() {
     this.juego = new SieteYMedia();
-    turnoJugador();
-    turnoBanca();
+    if (turnoJugador()) {
+      turnoBanca();
+    }
+
     System.out.println("Adios");
   }
 
-  public void turnoJugador() {
+  public boolean turnoJugador() {
     char opc = 'C';
     System.out.println(
       "Como mínimo recibes una carta, luego puedes decidir " +
@@ -80,14 +82,44 @@ public class InterfaceConsola {
         System.out.print(misCartas[i] + "  ");
       }
       System.out.println();
-      System.out.println("\n\tValor de cartas: " + this.juego.valorCartasJugador());
+      System.out.println(
+        "\n\tValor de cartas: " + this.juego.valorCartasJugador()
+      );
       if (this.juego.valorCartasJugador() < 7.5) {
         // suponemos que el usuario teclea bien !!!
         System.out.println("\n¿Pides [C]arta o te [P]lantas?");
         opc = sc.next().trim().toUpperCase().charAt(0);
       }
+
     }
+    if (this.juego.valorCartasJugador() > 7.5) {
+        System.out.println(
+          "Jugador, te has pasado en tu jugada anterior, gana la banca"
+        );
+        return false;
+      } else {
+        return true;
+      }
   }
 
-  public void turnoBanca() {}
+  public void turnoBanca() {
+    System.out.println("\n\nTurno de banca ...");
+    // juega hasta empatar o superar
+    while (this.juego.valorCartasBanca() < this.juego.valorCartasJugador()) {
+      String[] cartasBanca = this.juego.bancaPideCarta();
+      System.out.println("Éstas son mis cartas:");
+      for (int i = 0; cartasBanca[i] != null; i++) {
+        System.out.print(cartasBanca[i] + "  ");
+      }
+      System.out.println();
+      System.out.println(
+        "\n\nValor de mis cartas(banca): " + this.juego.valorCartasBanca()
+      );
+      if (this.juego.valorCartasBanca() > 7.5) {
+        System.out.println("me pasé, ganas tú,jugador");
+      } else {
+        System.out.println("Gana la banca");
+      }
+    }
+  }
 }
