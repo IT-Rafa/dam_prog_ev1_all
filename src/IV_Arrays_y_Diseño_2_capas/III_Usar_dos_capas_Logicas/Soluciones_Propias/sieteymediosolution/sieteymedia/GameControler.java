@@ -1,7 +1,8 @@
-package IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia;
+// GameControler.java
+package IV_Arrays_y_Diseño_2_capas.III_Usar_dos_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia;
 
-//GameControler.java
-import IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.recursos.*;
+import IV_Arrays_y_Diseño_2_capas.III_Usar_dos_capas_Logicas.Soluciones_Propias.sieteymediosolution.recursos.Baraja;
+import IV_Arrays_y_Diseño_2_capas.III_Usar_dos_capas_Logicas.Soluciones_Propias.sieteymediosolution.recursos.Carta;
 import java.util.Scanner;
 
 public class GameControler {

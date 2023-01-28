@@ -1,5 +1,5 @@
 //Carta.java
-package IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.recursos;
+package IV_Arrays_y_Diseño_2_capas.III_Usar_dos_capas_Logicas.Soluciones_Propias.sieteymediosolution.recursos;
 
 public class Carta {
 
