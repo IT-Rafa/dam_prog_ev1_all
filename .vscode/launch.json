@@ -6,6 +6,13 @@
         "configurations": [
                 {
                         "type": "java",
+                        "name": "Launch AceptaReto_Ej1_num_376",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.V_Acepta_El_Reto_arrays_1_dimension.Soluciones.AceptaReto_Ej1_num_376",
+                        "projectName": "dam_prog_ev1_all_4b75a6e6"
+                },
+                {
+                        "type": "java",
                         "name": "Launch GameControler",
                         "request": "launch",
                         "mainClass": "IV_Arrays_y_Diseño_2_capas.III_Usar_dos_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia.GameControler",

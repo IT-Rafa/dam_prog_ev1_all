@@ -1,4 +1,4 @@
-package IV_Arrays_y_Diseño_2_capas.Acepta_El_Reto_arrays_1_dimension.Soluciones;
+package IV_Arrays_y_Diseño_2_capas.V_Acepta_El_Reto_arrays_1_dimension.Soluciones_Propias;
 
 import java.util.Scanner;
 
@@ -46,10 +46,13 @@ import java.util.Scanner;
 
     4
     4 10 3 2
+
     4
     10 3 2 4
+
     5
     4 10 10 3 2
+    
     0
 
     Salida de ejemplo
