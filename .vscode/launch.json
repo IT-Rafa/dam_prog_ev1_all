@@ -1,0 +1,35 @@
+{
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+                {
+                        "type": "java",
+                        "name": "Launch Current File",
+                        "request": "launch",
+                        "mainClass": "${file}"
+                },
+                {
+                        "type": "java",
+                        "name": "Launch AceptaReto_Ej1_num_376",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.Acepta_El_Reto_arrays_1_dimension.Soluciones.AceptaReto_Ej1_num_376",
+                        "projectName": "dam_prog_ev1_all_bfceed47"
+                },
+                {
+                        "type": "java",
+                        "name": "Launch GameControler",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia.GameControler",
+                        "projectName": "dam_prog_ev1_all_bfceed47"
+                },
+                {
+                        "type": "java",
+                        "name": "Launch InterfaceConsola",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sieteymediosolution.sieteymedia.InterfaceConsola",
+                        "projectName": "dam_prog_ev1_all_bfceed47"
+                }
+        ]
+}

@@ -4,6 +4,7 @@ import IV_Arrays_y_Diseño_2_capas.III_2_capas_Logicas.Soluciones_Propias.sietey
 
 public class SieteYMedia {
 
+  int CARTASJUGADOR = 15;
   Baraja baraja;
   Carta[] cartasJugador;
   Carta[] cartasBanca;
@@ -15,8 +16,8 @@ public class SieteYMedia {
     // nos pasamos
     // hay 12 cartas de medio puntos, si sacara estas 12 luego cartas con valor 1
     // vemos que a partir de 15 cartas siempre se pasas
-    cartasJugador = new Carta[15];
-    cartasBanca = new Carta[15];
+    cartasJugador = new Carta[CARTASJUGADOR];
+    cartasBanca = new Carta[CARTASJUGADOR];
   }
 
   public double valorCartasJugador() {
@@ -40,10 +41,18 @@ public class SieteYMedia {
   }
 
   public String[] jugadorPideCarta() {
+    return pedirCarta(cartasJugador);
+  }
+
+  public String[] bancaPideCarta() {
+    return pedirCarta(cartasBanca);
+  }
+
+  private String[] pedirCarta(Carta[] cartas) {
     Carta c = baraja.darCartas(1)[0];
     // insertamos c en las cartas del jugador
-    insertarCartaEnArray(cartasJugador, c);
-    
+    insertarCartaEnArray(cartas, c);
+    return CartasToStringArray(cartas);
   }
 
   void insertarCartaEnArray(Carta[] cartas, Carta c) {
@@ -53,5 +62,15 @@ public class SieteYMedia {
       i++;
     }
     cartas[i] = c;
+  }
+
+  String[] CartasToStringArray(Carta[] cartas) {
+    String[] result = new String[CARTASJUGADOR];
+    int i = 0;
+    while (cartas[i] != null) {
+      result[i] = cartas[i].toString();
+      i++;
+    }
+    return result;
   }
 }

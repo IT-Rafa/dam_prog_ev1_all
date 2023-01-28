@@ -73,10 +73,19 @@ public class InterfaceConsola {
       " si seguir o plantarte"
     );
 
-    if (this.juego.valorCartasJugador() < 7.5 && opc == 'C') {
-        String[] misCartas = this.juego.jugadorPideCarta();
-        System.out.println("Éstas son tus cartas jugador:");
-
+    while (this.juego.valorCartasJugador() < 7.5 && opc == 'C') {
+      String[] misCartas = this.juego.jugadorPideCarta();
+      System.out.println("Éstas son tus cartas jugador:");
+      for (int i = 0; misCartas[i] != null; i++) {
+        System.out.print(misCartas[i] + "  ");
+      }
+      System.out.println();
+      System.out.println("\n\tValor de cartas: " + this.juego.valorCartasJugador());
+      if (this.juego.valorCartasJugador() < 7.5) {
+        // suponemos que el usuario teclea bien !!!
+        System.out.println("\n¿Pides [C]arta o te [P]lantas?");
+        opc = sc.next().trim().toUpperCase().charAt(0);
+      }
     }
   }
 
