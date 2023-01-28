@@ -6,6 +6,13 @@
         "configurations": [
                 {
                         "type": "java",
+                        "name": "Launch Ejercicio_U4_B4A_E1",
+                        "request": "launch",
+                        "mainClass": "IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4A.Ejercicio_U4_B4A_E1",
+                        "projectName": "dam_prog_ev1_all_4b75a6e6"
+                },
+                {
+                        "type": "java",
                         "name": "Launch AceptaReto_Ej1_num_376",
                         "request": "launch",
                         "mainClass": "IV_Arrays_y_Diseño_2_capas.V_Acepta_El_Reto_arrays_1_dimension.Soluciones.AceptaReto_Ej1_num_376",
