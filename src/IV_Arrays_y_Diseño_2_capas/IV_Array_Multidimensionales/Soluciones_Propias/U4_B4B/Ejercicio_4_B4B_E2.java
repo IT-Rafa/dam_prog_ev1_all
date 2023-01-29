@@ -1,4 +1,4 @@
-package U4_B4B;
+package IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4B;
 
 /* Ejercicio U4_B4B_E2: 
 	Acepta el reto Campo de minas id 176.

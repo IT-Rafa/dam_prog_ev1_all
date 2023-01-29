@@ -1,4 +1,4 @@
-package U4_B4A;
+package IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4A;
 
 /* Ejercicio U4_B4A_E4:
     Con una matriz cuadrada, introduciendo el tamaño por argumento EN LLAMADA DESDE CONSOLA, inicializar 

@@ -1,4 +1,4 @@
-package U4_B4D;
+package IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4D;
 
 /* Ejercicio U4_B4D_E2:
 	Ahora queremos ver el jardín dividido en 4 cuadrantes con una

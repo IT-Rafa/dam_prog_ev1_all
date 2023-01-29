@@ -1,4 +1,4 @@
-package U4_B4A;
+package IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4A;
 
 /* Ejercicio U4_B4A_E3: 
     Si no lo hiciste ya, vuelve a escribir el ejercicio anterior de forma que
