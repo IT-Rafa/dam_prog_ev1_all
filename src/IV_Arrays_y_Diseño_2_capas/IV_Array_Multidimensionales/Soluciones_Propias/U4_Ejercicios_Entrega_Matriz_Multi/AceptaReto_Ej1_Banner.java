@@ -1,6 +1,6 @@
 package IV_Arrays_y_Diseño_2_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_Ejercicios_Entrega_Matriz_Multi;
 
-public class Ejercicio_1_Banner {
+public class AceptaReto_Ej1_Banner {
         public static void main(String[] args) {
     
             // Altura letras
@@ -8,7 +8,7 @@ public class Ejercicio_1_Banner {
     
             // Aviso si no hay argumentos
             if (args.length == 0) {
-                System.out.println("Error. No argumentos");
+                System.out.println("Error. No argumentos:" + args.length);
                 return;
             }
     
@@ -28,6 +28,7 @@ public class Ejercicio_1_Banner {
             for (int line = 0; line < MAXHEIGHT; line++) {
                 // Recorremos cada letra
                 for (int aChar = 0; aChar < graph.length; aChar++) {
+                        System.out.print(" ");
                     // Mostramos cada línea
                     System.out.print(graph[aChar][line]);
                     // Con un espacio tras cada letra

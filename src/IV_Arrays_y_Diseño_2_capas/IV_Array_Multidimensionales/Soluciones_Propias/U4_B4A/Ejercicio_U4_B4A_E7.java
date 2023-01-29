@@ -60,18 +60,8 @@ public class Ejercicio_U4_B4A_E7 {
         // Altura letras
         final int MAXHEIGHT = 5;
 
-        // Aviso si no hay argumentos
-        if (args.length == 0) {
-            System.out.println("Error. No argumentos");
-            return;
-        }
+        String input = "dam";
 
-        // Si hay varios argumentos, lo convertimos a un solo string
-        String input = args[0].toLowerCase();
-        for (int i = 1; i < args.length; i++) {
-            input += " " + args[i];
-        }
-        
         // Convertimos string a  char[][][]
         char[][][] graph = StringToConsoleGraph(input);
 
@@ -82,6 +72,7 @@ public class Ejercicio_U4_B4A_E7 {
         for (int line = 0; line < MAXHEIGHT; line++) {
             // Recorremos cada letra
             for (int aChar = 0; aChar < graph.length; aChar++) {
+                
                 // Mostramos cada línea
                 System.out.print(graph[aChar][line]);
                 // Con un espacio tras cada letra
