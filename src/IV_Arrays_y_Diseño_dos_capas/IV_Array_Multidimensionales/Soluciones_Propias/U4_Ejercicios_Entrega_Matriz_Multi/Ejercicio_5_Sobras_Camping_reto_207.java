@@ -102,12 +102,14 @@ public class Ejercicio_5_Sobras_Camping_reto_207 {
       char[][] matriz = new char[filaMatriz][colMatriz];
 
       // Añadimos char '*' para cada arbol
-      for (int i = 0; i < arbolesPos.length; i += 2) {
-        matriz[Integer.parseInt(arbolesPos[i + 1]) - 1][Integer.parseInt(
-            arbolesPos[i]
-          ) -
-          1] =
-          '*';
+      if (arbolesPos.length != 0) {
+        for (int i = 0; i < arbolesPos.length; i += 2) {
+          matriz[Integer.parseInt(arbolesPos[i + 1]) - 1][Integer.parseInt(
+              arbolesPos[i]
+            ) -
+            1] =
+            '*';
+        }
       }
 
       // Contamos sombras
@@ -168,4 +170,3 @@ public class Ejercicio_5_Sobras_Camping_reto_207 {
     return total;
   }
 }
-
