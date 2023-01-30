@@ -1,10 +1,9 @@
 package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4B;
 
 /* Ejercicio U4_B4B_E2: 
-	Acepta el reto Campo de minas id 176.
+	Acepta el reto Sombras en el camping id 207.
 	Buscamos texto en enlace
-	https://www.aceptaelreto.com/pub/problems/v002/07/st/statements/Spanish/index.html
-
+7
 	Sombras en el camping
 	Tiempo máximo: 2,000-4,000 sMemoria máxima: 4096 KiB
 
@@ -80,90 +79,92 @@ import java.util.Scanner;
 
 public class Ejercicio_4_B4B_E2 {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-		// Pedimos columnas, filas y arboles
-		String inputTamArb = sc.nextLine();
+    // Pedimos columnas, filas y arboles
+    String inputTamArb = sc.nextLine();
 
-		// Comprobamos que no es todo 0
-		while (!inputTamArb.equals("0 0 0")) {
-			// Convertimos columna y fila en enteros
-			String[] inputList = inputTamArb.split(" ");
-			int colMatriz = Integer.parseInt(inputList[0]);
-			int filaMatriz = Integer.parseInt(inputList[1]);
+    // Comprobamos que no es todo 0
+    while (!inputTamArb.equals("0 0 0")) {
+      // Convertimos columna y fila en enteros
+      String[] inputList = inputTamArb.split(" ");
+      int colMatriz = Integer.parseInt(inputList[0]);
+      int filaMatriz = Integer.parseInt(inputList[1]);
 
-			// Pedimos a usuario la posición de cada árbol (columna y fila)
-			// todas en una línea.
-			String inputArboles = sc.nextLine();
-			// Separamos datos
-			String[] arbolesPos = inputArboles.split(" ");
+      // Pedimos a usuario la posición de cada árbol (columna y fila)
+      // todas en una línea.
+      String inputArboles = sc.nextLine();
+      // Separamos datos
+      String[] arbolesPos = inputArboles.split(" ");
 
-			// Creamos matriz (Con char vacio en cada línea)
-			char[][] matriz = new char[filaMatriz][colMatriz];
+      // Creamos matriz (Con char vacio en cada línea)
+      char[][] matriz = new char[filaMatriz][colMatriz];
 
-			// Añadimos char '*' para cada arbol
-			for (int i = 0; i < arbolesPos.length; i += 2) {
-				matriz[Integer.parseInt(arbolesPos[i + 1]) -
-					1][Integer.parseInt(arbolesPos[i]) - 1] =
-					'*';
-			}
+      // Añadimos char '*' para cada arbol
+      for (int i = 0; i < arbolesPos.length; i += 2) {
+        matriz[Integer.parseInt(arbolesPos[i + 1]) - 1][Integer.parseInt(
+            arbolesPos[i]
+          ) -
+          1] =
+          '*';
+      }
 
-			// Contamos sombras
-			int cantSombras = 0;
+      // Contamos sombras
+      int cantSombras = 0;
 
-			// Recorremos matriz y, para cada arbol, contamos las sombras
-			for (int fila = 0; fila < filaMatriz; fila++) {
-				for (int col = 0; col < colMatriz; col++) {
-					if (matriz[fila][col] == '*') {
-						cantSombras += añadirSombras(matriz, fila, col);
-					}
-				}
-			}
-			// Muestra la cantidad de sombras
-			System.out.println(cantSombras);
+      // Recorremos matriz y, para cada arbol, contamos las sombras
+      for (int fila = 0; fila < filaMatriz; fila++) {
+        for (int col = 0; col < colMatriz; col++) {
+          if (matriz[fila][col] == '*') {
+            cantSombras += añadirSombras(matriz, fila, col);
+          }
+        }
+      }
+      // Muestra la cantidad de sombras
+      System.out.println(cantSombras);
 
-			// Pedimos columnas, filas y arboles, para repetir
-			inputTamArb = sc.nextLine();
-		}
+      // Pedimos columnas, filas y arboles, para repetir
+      inputTamArb = sc.nextLine();
+    }
 
-		sc.close();
-	}
+    sc.close();
+  }
 
-	/**
-	 * Cuenta las sombras de cada arbol, ignorando las sombras de los arboles
-	 * contados anteriormente
-	 *
-	 * @param matriz Matriz donde están los arboles y sus sombras
-	 * @param fila   Fila en la matriz, donde está el arbol
-	 * @param col    Col en la matriz, donde está el arbol
-	 *
-	 * @return Cantidad de sombras que tiene el árbol, sin contar las anteriores
-	 */
-	static int añadirSombras(char[][] matriz, int fila, int col) {
-		// total sombras
-		int total = 0;
-		for (
-			int f = Math.max(0, fila - 1);
-			f < Math.min(matriz.length, fila + 2);
-			f++
-		) {
-			for (
-				int c = Math.max(0, col - 1);
-				c < Math.min(matriz[f].length, col + 2);
-				c++
-			) {
-				if (f == fila && c == col) {
-					continue;
-				}
-				// Para cada grupo que no son arboles, ni sombras de arboles
-				// ya contadas, las sumamos y convertimos en arbol. char 'o'
-				if (matriz[f][c] != '*' && matriz[f][c] != 'o') {
-					matriz[f][c] = 'o';
-					total++;
-				}
-			}
-		}
-		return total;
-	}
+  /**
+   * Cuenta las sombras de cada arbol, ignorando las sombras de los arboles
+   * contados anteriormente
+   *
+   * @param matriz Matriz donde están los arboles y sus sombras
+   * @param fila   Fila en la matriz, donde está el arbol
+   * @param col    Col en la matriz, donde está el arbol
+   *
+   * @return Cantidad de sombras que tiene el árbol, sin contar las anteriores
+   */
+  static int añadirSombras(char[][] matriz, int fila, int col) {
+    // total sombras
+    int total = 0;
+    for (
+      int f = Math.max(0, fila - 1);
+      f < Math.min(matriz.length, fila + 2);
+      f++
+    ) {
+      for (
+        int c = Math.max(0, col - 1);
+        c < Math.min(matriz[f].length, col + 2);
+        c++
+      ) {
+        if (f == fila && c == col) {
+          continue;
+        }
+        // Para cada grupo que no son arboles, ni sombras de arboles
+        // ya contadas, las sumamos y convertimos en arbol. char 'o'
+        if (matriz[f][c] != '*' && matriz[f][c] != 'o') {
+          matriz[f][c] = 'o';
+          total++;
+        }
+      }
+    }
+    return total;
+  }
 }

@@ -19,14 +19,14 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Pro
         el mismo en la copia. Si esa copia cae en las manos de un segundo 
         duplicador daltónico que hace una nueva copia, y luego otro, y luego 
         otro, el resultado final puede no parecerse en nada al original, sobre 
-        todo si el tipo de daltonismo de cada uno difiere1.
+        todo si el tipo de daltonismo de cada uno difiere.
 
         Como ejemplo, en la figura aparece la transformación que puede sufrir un 
         cuadro de pixel art con uno de los personajes del Pacman tras el paso por 
         varios copistas daltónicos. Los colores originales son azul, rojo, blanco 
         y negro. En la primera reproducción el copista sufría un tipo de 
         daltonismo que le hacía ver igual los colores azul y rojo lo que hace que 
-        todos los azules terminen siendo rojos2. En la segunda reproducción el 
+        todos los azules terminen siendo rojos. En la segunda reproducción el 
         copista convirtió todos los rojos en amarillo. El último de la serie veía 
         todos los negros grises.
 
@@ -95,6 +95,79 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Pro
         YYYYYYYYY 
 */
 
+/*
+ * - Pedimos datos tamaño: filas + columnas
+ * 
+ *      - Cuando el cuadro sea de tamaño 0 x 0, finaliza el programa
+ *      - lineas del cuadro
+ *      - cantidad daltónicos que copiarán el cuadro
+ *      - Por cada daltónico, se indican 2 caracteres
+ *              el primero será sustituido y el segundo, con el que se sustituye
+ *      - Se muestra el cuadro tal como queda tras todas las copias
+ *      - Volvemos a pedir un nuevo cuadro
+ *               datos tamaño: filas + columnas
+ 
+ */
+
+import java.util.Scanner;
+
+/**
+ *
+ */
 public class Ejercicio_3_Copistas_daltónicos_reto_266 {
-    
+
+  private static Scanner sc;
+
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
+    sc = new Scanner(System.in);
+    while (true) {
+      // Pedimos a usuario tamaño lienzo
+      String[] sizeSplit = sc.nextLine().split(" ");
+      int width = Integer.parseInt(sizeSplit[0]);
+      int height = Integer.parseInt(sizeSplit[1]);
+      // Si ambos son 0, finalizamos
+      if (width == 0 && height == 0) {
+        return;
+      }
+      // Creamos el lienzo
+      char[][] picture = new char[width][height];
+      // Pedimos a usuario cada línea del lienzo y lo añadimos
+      for (int file = 0; file < picture.length; file++) {
+        String line = sc.nextLine();
+        for (int col = 0; col < picture[file].length; col++) {
+          picture[file][col] = line.charAt(col);
+        }
+      }
+      // Pedimos cantidad de copias(copistas)
+      int cantCop = Integer.parseInt(sc.nextLine());
+      char[][] failCopy = new char[cantCop][2];
+      // Por cada copista, añadimos los fallos que cometen
+      for (int i = 0; i < cantCop; i++) {
+        String[] failSplit = sc.nextLine().split(" ");
+        failCopy[i][0] = failSplit[0].charAt(0);
+        failCopy[i][1] = failSplit[1].charAt(0);
+      }
+
+      // Hacemos las copias
+      // Por copista
+      for (int i = 0; i < cantCop; i++) {
+        for (int file = 0; file < picture.length; file++) {
+          for (int col = 0; col < picture[file].length; col++) {
+            if (picture[file][col] == failCopy[i][0]) {
+              picture[file][col] = failCopy[i][1];
+            }
+          }
+        }
+      }
+      for (int file = 0; file < picture.length; file++) {
+        for (int col = 0; col < picture[file].length; col++) {
+          System.out.print(picture[file][col]);
+        }
+        System.out.println();
+      }
+    }
+  }
 }
