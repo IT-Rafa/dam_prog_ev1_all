@@ -91,40 +91,43 @@ public class Ejercicio_5_Sobras_Camping_reto_207 {
       String[] inputList = inputTamArb.split(" ");
       int colMatriz = Integer.parseInt(inputList[0]);
       int filaMatriz = Integer.parseInt(inputList[1]);
+      int cantArboles = Integer.parseInt(inputList[2]);
 
       // Pedimos a usuario la posición de cada árbol (columna y fila)
-      // todas en una línea.
-      String inputArboles = sc.nextLine();
-      // Separamos datos
-      String[] arbolesPos = inputArboles.split(" ");
+      // todas en una línea y Separamos datos
+      String[] arbolesPos = sc.nextLine().split(" ");
+      if (arbolesPos.length != cantArboles) {}
 
-      // Creamos matriz (Con char vacio en cada línea)
+      // Creamos matriz para el campo (Con char vacio en cada línea)
       char[][] matriz = new char[filaMatriz][colMatriz];
 
       // Añadimos char '*' para cada arbol
-      if (arbolesPos.length != 0) {
+      if (arbolesPos.length / 2 != cantArboles) {
         for (int i = 0; i < arbolesPos.length; i += 2) {
           matriz[Integer.parseInt(arbolesPos[i + 1]) - 1][Integer.parseInt(
               arbolesPos[i]
             ) -
             1] =
             '*';
-        }
-      }
 
-      // Contamos sombras
-      int cantSombras = 0;
+          // Contamos sombras
+          int cantSombras = 0;
 
-      // Recorremos matriz y, para cada arbol, contamos las sombras
-      for (int fila = 0; fila < filaMatriz; fila++) {
-        for (int col = 0; col < colMatriz; col++) {
-          if (matriz[fila][col] == '*') {
-            cantSombras += añadirSombras(matriz, fila, col);
+          // Recorremos matriz y, para cada arbol, contamos las sombras
+          for (int fila = 0; fila < filaMatriz; fila++) {
+            for (int col = 0; col < colMatriz; col++) {
+              if (matriz[fila][col] == '*') {
+                cantSombras += añadirSombras(matriz, fila, col);
+              }
+            }
           }
+          // Muestra la cantidad de sombras
+          System.out.println(cantSombras);
         }
+      } else {
+        System.out.println("0");
+        continue;
       }
-      // Muestra la cantidad de sombras
-      System.out.println(cantSombras);
 
       // Pedimos columnas, filas y arboles, para repetir
       inputTamArb = sc.nextLine();
