@@ -1,4 +1,4 @@
-package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4D;
+package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4D.Ejercicio_U4_B4D_E1;
 
 /* Ejercicio U4_B4D_E1:
 	Escribir la clase PlanoJardin que representa el plano de un
@@ -41,21 +41,38 @@ public class Ejercicio_U4_B4D_E1 {
     plano.plantarArbol(2, 0);
     System.out.println("despues de plantar");
     plano.imprimirPlano();
+    System.out.println(plano.hayArbol(0, 3));
+    System.out.println(plano.hayArbol(3, 0));
   }
 }
 
+/**
+ * Representa el plano de un jardin.
+ * Las coordenadas se indican como un plano de coordenadas, es decir,
+ * Las coordenadas se cuentan desde la parte inferior izquierda.
+ * (nº Filas = 4 = alto = y)
+ * 3
+ * 2
+ * 1
+ * 0 1 2 3 4 (nº Columnas= 5 = ancho = x)
+ * 
+ * El para indicar una zona se indica (x = Columna) + (y = Línea)
+ * Para localizar el plano en una matriz de ordenador se usa 
+ * matriz[y = Línea][x = Columna]
+ */
 class PlanoJardin {
 
   // PROPERTIES
   private char[][] jardin;
-  private int ancho;
-  private int alto;
 
   // CONSTRUCTORS
-  public PlanoJardin(int alto, int ancho) {
-    this.alto = alto;
-    this.ancho = ancho;
-    this.jardin = new char[ancho][alto];
+  /**
+   * Constructor PlanoJardin con argumentos.
+   * Se le indica el ancho de la tabla y su alto y se
+   * rellena con char '-'.
+   */
+  public PlanoJardin(int ancho, int alto) {
+    this.jardin = new char[alto][ancho];
     for (int fila = 0; fila < this.jardin.length; fila++) {
       for (int col = 0; col < this.jardin[fila].length; col++) {
         jardin[fila][col] = '-';
@@ -63,16 +80,47 @@ class PlanoJardin {
     }
   }
 
+  /**
+   * Muestra el plano del jardin en consola
+   */
   public void imprimirPlano() {
     for (int fila = 0; fila < this.jardin.length; fila++) {
       for (int col = 0; col < this.jardin[fila].length; col++) {
+        //System.out.print(this.jardin.length - fila -1);
+
         System.out.print(jardin[fila][col] + " ");
       }
       System.out.println();
     }
   }
 
-  public void plantarArbol(int posY, int posX) {
-    jardin[posX][posY] = 'A';
+  /**
+   * Inserta un arbol en una plaza del jardín.
+   * La posición indicada es la de los planos (columna, fila). y los valores
+   * a controlar son como de un plano de coordenadas matemático, con 1 cuadrante.
+   * Es decir que la casilla 0,0 está a la izquierda y abajo.
+   *
+   * @param posX posición de línea del nuevo árbol
+   * @param posY posición de columna del nuevo árbol
+   */
+  public void plantarArbol(int posX, int posY) {
+    jardin[this.jardin.length - posY - 1][posX] = 'A';
+  }
+
+  /**
+   * Inserta un arbol en una plaza del jardín.
+   * La posición indicada es la de los planos (columna, fila). y los valores
+   * a controlar son como de un plano de coordenadas matemático, con 1 cuadrante.
+   * Es decir que la casilla 0,0 está a la izquierda y abajo.
+   *
+   * @param posX posición de línea del nuevo árbol
+   * @param posY posición de columna del nuevo árbol
+   */
+  public boolean hayArbol(int posX, int posY) {
+    if (jardin[this.jardin.length - posY - 1][posX] == 'A') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

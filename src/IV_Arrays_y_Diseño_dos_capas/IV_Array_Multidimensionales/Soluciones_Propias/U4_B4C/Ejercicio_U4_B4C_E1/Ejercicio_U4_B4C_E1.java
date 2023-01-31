@@ -1,4 +1,4 @@
-package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4C;
+package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Propias.U4_B4C.Ejercicio_U4_B4C_E1;
 
 /* Ejercicio U4_B4C_E1: 
     Generalizamos un poco el código anterior escribiendo un método que 
