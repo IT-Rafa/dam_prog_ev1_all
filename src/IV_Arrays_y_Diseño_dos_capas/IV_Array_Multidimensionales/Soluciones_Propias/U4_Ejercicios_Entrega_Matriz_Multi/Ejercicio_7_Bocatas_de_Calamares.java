@@ -26,11 +26,11 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Pro
         un radio y el programa me indique los punto de venta de bocatas de calamares 
         dentro del radio indicado.
 
-        ENTRADA: En la primera línea un entero que indica  la dimensión d de la 
+        ENTRADA: En la primera línea un entero que indica la dimensión d de la 
         matriz con d>0 y a continuación en la misma línea separada por un espacio un 
         número real para indicar el radio de búsqueda con r>0.0 en hectómetros, 
         por ejemplo un radio de 2.5 hectómetros se corresponde con 250 metros 
-        Por último vienen d líneas que describen  el mapa. 
+        Por último vienen d líneas que describen el mapa. 
 
         SALIDA:
 
@@ -65,7 +65,36 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.Soluciones_Pro
  *      - Pedir diametro de busqueda
  * Pedir al usuario en misma línea
  *      - por cada linea del mapa la lista tiendas.
- *              DI no importa
- *              columna + linea punto venta calamares
+ *              - una posición por columna con:
+ *                    "DI" no importa
+ *                    'C' + 'nº tienda'
+ *
  */
-public class Ejercicio_7_Bocatas_de_Calamares {}
+
+import java.util.Scanner;
+
+public class Ejercicio_7_Bocatas_de_Calamares {
+
+  static Scanner sc = new Scanner(System.in);
+
+  public static void main(String[] args) {
+    String[] dim_and_diam = sc.nextLine().split(" ");
+    int dimen = Integer.parseInt(dim_and_diam[0]);
+    double diam = Double.parseDouble(dim_and_diam[1]);
+
+    String[][] matriz = new String[dimen][dimen];
+    for (int line = 0; line < dimen; line++) {
+      String[] pos = sc.nextLine().split(" ");
+      for (int col = 0; col < dimen; col++) {
+        matriz[line][col] = pos[col];
+      }
+    }
+
+    for (int line = 0; line < dimen; line++) {
+        for (int col = 0; col < dimen; col++) {
+          System.out.print(matriz[line][col]) ;
+        }
+        System.out.println();
+      }
+  }
+}
