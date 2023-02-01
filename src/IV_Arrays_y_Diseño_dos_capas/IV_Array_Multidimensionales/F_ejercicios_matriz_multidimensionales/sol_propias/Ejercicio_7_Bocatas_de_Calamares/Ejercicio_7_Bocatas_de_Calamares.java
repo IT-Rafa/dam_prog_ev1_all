@@ -14,13 +14,13 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.F_ejercicios_m
         otro buscando una solución de compromiso según mi momento. Cada celda del 
         mapa puede almacenar:
 
-        CX para indicar que es un punto de venta de bocatas de calamares.
-        X es un número entero para identificar el punto de venta. 
-        Se garantiza que no habrá dos puntos de venta con la misma X y que siempre
-         X<99 y X<d. 
+        · CX para indicar que es un punto de venta de bocatas de calamares.
+                X es un número entero para identificar el punto de venta. 
+                Se garantiza que no habrá dos puntos de venta con la misma X y que 
+                siempre X < 99 y X < d. 
 
-        NI (no interesa)para indicar  cualquier otra cosa que no me interesa en 
-        absoluto.
+        · NI (no interesa)para indicar  cualquier otra cosa que no me interesa en 
+                absoluto.
 
         Me gustaría que me hicieras un programa de forma que yo le indique un mapa y 
         un radio y el programa me indique los punto de venta de bocatas de calamares 
@@ -35,7 +35,7 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.F_ejercicios_m
         SALIDA:
 
         Una lista de los puntos de venta de bocadillos de calamares dentro del radio. 
-        Cada línea de la salida contendrá un punto de bocata de calamares sleccionado 
+        Cada línea de la salida contendrá un punto de bocata de calamares seleccionado 
         junto con la distancia en hectómertos a la que se encuentra. 
 
         Por ejemplo:
@@ -119,12 +119,10 @@ public class Ejercicio_7_Bocatas_de_Calamares {
     System.out.println();
     for (int line = 0; line < dimen; line++) {
       for (int col = 0; col < dimen; col++) {
-        if(matriz[line][col].startsWith("C")){
-                System.out.println(matriz[line][col] + " está en ");
+        if (matriz[line][col].startsWith("C")) {
+          System.out.println(matriz[line][col] + " está en ");
         }
- 
       }
- 
     }
   }
 }
