@@ -76,6 +76,7 @@ import java.util.Scanner;
 public class Ejercicio_7_Bocatas_de_Calamares {
 
   static Scanner sc = new Scanner(System.in);
+  static final int HEC = 100;
 
   public static void main(String[] args) {
     /*
@@ -84,7 +85,7 @@ public class Ejercicio_7_Bocatas_de_Calamares {
     double diam = Double.parseDouble(dim_and_diam[1]);
  */
     int dimen = 5;
-    double diam = 2.5 * 100;
+    double diam = 2.5;
     System.out.println("Calcular dentro de " + diam + " metros");
     /*
     String[][] matriz = new String[dimen][dimen];
@@ -102,13 +103,12 @@ public class Ejercicio_7_Bocatas_de_Calamares {
       { "NI", "C6", "NI", "NI", "NI" },
       { "NI", "C7", "NI", "NI", "C8" },
     };
-
     int casaX = matriz.length / 2;
     int casaY = matriz[0].length / 2;
     matriz[casaX][casaY] = "C ";
 
-    int radio = matriz.length - 1 - casaX;
-    System.out.println("Radio = " + radio * 100);
+    double radio = matriz.length - 1 - casaX;
+    System.out.println("Radio = " + radio);
 
     for (int line = 0; line < dimen; line++) {
       for (int col = 0; col < dimen; col++) {
@@ -120,7 +120,20 @@ public class Ejercicio_7_Bocatas_de_Calamares {
     for (int line = 0; line < dimen; line++) {
       for (int col = 0; col < dimen; col++) {
         if (matriz[line][col].startsWith("C")) {
-          System.out.println(matriz[line][col] + " está en ");
+
+          if (
+            (radio *
+            radio >=
+            (line - casaX) *
+            (line - casaX) +
+            (col - casaY) *
+            (col - casaY))
+          ) {
+            System.out.println(matriz[line][col] + " está en " + (((((double)line - casaX) *
+            (line - casaX)) +
+            ((col - casaY) *
+            (col - casaY)))));
+          }
         }
       }
     }

@@ -2,5 +2,10 @@
 		Pendientes hacer
 
 	Ejercicio_5_Sombras en el camping_207
+		- Posible fallo entrada
 		Pendiente entrega clase
 		Pendiente entrega reto
+
+	Ejercicio_7_Bocatas_de_Calamares
+	
+	Ejercicio_8_Escapando_de_las_fuerzas_imperiales_432
