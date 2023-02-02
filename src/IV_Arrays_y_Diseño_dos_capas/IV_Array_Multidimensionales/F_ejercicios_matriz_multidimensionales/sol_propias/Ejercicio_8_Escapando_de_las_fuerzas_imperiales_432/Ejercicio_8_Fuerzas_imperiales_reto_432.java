@@ -1,4 +1,5 @@
 package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.F_ejercicios_matriz_multidimensionales.sol_propias.Ejercicio_8_Escapando_de_las_fuerzas_imperiales_432;
+
 /* Ejercicio_8_Fuerzas_imperiales_reto_432
         acepta el reto: Escapando de las fuerzas imperiales (432)
 
@@ -42,9 +43,11 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.F_ejercicios_m
         2 2
         SF
         ..
+
         2 3
         S*F
         *..
+
         3 3
         .S.
         **.
@@ -56,8 +59,103 @@ package IV_Arrays_y_Diseño_dos_capas.IV_Array_Multidimensionales.F_ejercicios_m
         NO
         SI
  */
-public class Ejercicio_8_Fuerzas_imperiales_reto_432{
-        public static void main(String[] args){
-                
+/*
+ * f alto filas
+ * c ancho columnas
+ * S casilla para entrar
+ * f casilla salir
+ * * casilla asteroide
+ * . casilla libre
+ *
+ * - Pedir f y c (ancho filas y alto columnas cuadrante), entre 1 y 20
+ * - Pedir en una línea los caracteres que hay en cada línea.
+ *
+ * - Comprobar que, entrando desde casilla s, hasta casilla f, se puede
+ *      recorrer el camino solo moviendose en horizontal y vertical (no diagonal)
+ * - Mostrar "SI" o "NO" según sea o no posible
+ *
+ */
+
+import java.util.Scanner;
+
+public class Ejercicio_8_Fuerzas_imperiales_reto_432 {
+
+  private static Scanner sc = new Scanner(System.in);
+  final static char espacio = '.';
+  final static char meteorito = '*';
+  final static char entrada = 'S';
+  final static char salida = 'F';
+
+  public static void main(String[] args) {
+    // Pedimos dimension del campo asteroides
+    String[] dimension = sc.nextLine().split(" ");
+
+    // Pasamos a int
+    int f = Integer.parseInt(dimension[0]);
+    int c = Integer.parseInt(dimension[1]);
+
+    // Creamos campo
+    char[][] campo = new char[f][c];
+    // Pedimos e introducimos campos y capturamos inicio
+    int initX = -1;
+    int initY = -1;
+    for (int i = 0; i < f; i++) {
+      String lineSt = sc.nextLine().toUpperCase();
+      for (int j = 0; j < c; j++) {
+        campo[i][j] = lineSt.charAt(j);
+        if (lineSt.charAt(j) == 'S') {
+          initX = i;
+          initY = j;
         }
+      }
+    }
+
+    // Mostramos campo
+    for (int i = 0; i < f; i++) {
+      for (int j = 0; j < c; j++) {
+        System.out.print(campo[i][j]);
+      }
+      System.out.println();
+    }
+    System.out.println();
+
+    // Localizamos salida
+    if (!hayCamino(initX, initY, campo)) {
+      System.out.println("no hay solucion");
+
+    } else {
+        // Mostramos salida
+      for (char[] fila : campo) {
+        for (char col : fila) {
+          System.out.print(col);
+        }
+        System.out.println("");
+      }
+    }
+  }
+/**
+ * Busca camino para llegar al final
+ */
+  static boolean hayCamino(int i, int j, char[][] laberinto) {
+    if (
+      i < 0 || i > laberinto.length - 1 || j < 0 || j > laberinto[i].length - 1
+    ) return false;
+    if (laberinto[i][j] == meteorito) {
+      return false;
+    }
+    if (laberinto[i][j] == espacio) {
+      return false;
+    }
+    if (laberinto[i][j] == salida) {
+      return true;
+    }
+
+    laberinto[i][j] = espacio;
+    if (hayCamino(i - 1, j, laberinto)) return true; //vecino norte
+    if (hayCamino(i + 1, j, laberinto)) return true; //vecino sur
+    if (hayCamino(i, j + 1, laberinto)) return true; //vecino oeste
+    if (hayCamino(i, j - 1, laberinto)) return true; //vecino este
+    laberinto[i][j] = 'v';
+    return false;
+  }
 }
