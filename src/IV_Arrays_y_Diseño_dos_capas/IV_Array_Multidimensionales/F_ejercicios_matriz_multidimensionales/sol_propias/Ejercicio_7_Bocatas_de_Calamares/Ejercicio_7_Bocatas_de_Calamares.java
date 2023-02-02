@@ -118,24 +118,20 @@ public class Ejercicio_7_Bocatas_de_Calamares {
     }
     System.out.println();
     for (int line = 0; line < dimen; line++) {
+        double yy = line - casaX;
       for (int col = 0; col < dimen; col++) {
-        if (matriz[line][col].startsWith("C")) {
-
-          if (
-            (radio *
-            radio >=
-            (line - casaX) *
-            (line - casaX) +
-            (col - casaY) *
-            (col - casaY))
-          ) {
-            System.out.println(matriz[line][col] + " está en " + (((((double)line - casaX) *
-            (line - casaX)) +
-            ((col - casaY) *
-            (col - casaY)))));
-          }
-        }
+        double xx = col - casaY;
+        if (Math.sqrt(xx * xx + yy * yy) <= casaX){
+                matriz[line][col] = "**";
+        } 
       }
     }
+
+    for (int line = 0; line < dimen; line++) {
+        for (int col = 0; col < dimen; col++) {
+          System.out.print(matriz[line][col] + " ");
+        }
+        System.out.println();
+      }
   }
 }
