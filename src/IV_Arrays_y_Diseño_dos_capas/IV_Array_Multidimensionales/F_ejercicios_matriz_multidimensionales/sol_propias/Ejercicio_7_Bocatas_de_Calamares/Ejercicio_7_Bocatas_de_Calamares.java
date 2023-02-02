@@ -79,15 +79,10 @@ public class Ejercicio_7_Bocatas_de_Calamares {
   static final int HEC = 100;
 
   public static void main(String[] args) {
-    /*
     String[] dim_and_diam = sc.nextLine().split(" ");
     int dimen = Integer.parseInt(dim_and_diam[0]);
-    double diam = Double.parseDouble(dim_and_diam[1]);
- */
-    int dimen = 5;
-    double diam = 2.5;
-    System.out.println("Calcular dentro de " + diam + " metros");
-    /*
+    double diam = Double.parseDouble(dim_and_diam[1].replace(',','.'));
+
     String[][] matriz = new String[dimen][dimen];
     for (int line = 0; line < dimen; line++) {
       String[] pos = sc.nextLine().split(" ");
@@ -95,43 +90,32 @@ public class Ejercicio_7_Bocatas_de_Calamares {
         matriz[line][col] = pos[col];
       }
     }
-        */
-    String[][] matriz = {
-      { "C1", "C2", "NI", "NI", "NI" },
-      { "NI", "NI", "NI", "C3", "NI" },
-      { "NI", "C4", "NI ", "NI", "C5" },
-      { "NI", "C6", "NI", "NI", "NI" },
-      { "NI", "C7", "NI", "NI", "C8" },
-    };
+    /*
+        int dimen = 5;
+        double diam = 2.5;
+        String[][] matriz = {
+        { "C1", "C2", "NI", "NI", "NI" },
+        { "NI", "NI", "NI", "C3", "NI" },
+        { "NI", "C4", "NI ", "NI", "C5" },
+        { "NI", "C6", "NI", "NI", "NI" },
+        { "NI", "C7", "NI", "NI", "C8" },
+        };
+    */
+
     int casaX = matriz.length / 2;
     int casaY = matriz[0].length / 2;
-    matriz[casaX][casaY] = "C ";
-
-    double radio = matriz.length - 1 - casaX;
-    System.out.println("Radio = " + radio);
 
     for (int line = 0; line < dimen; line++) {
-      for (int col = 0; col < dimen; col++) {
-        System.out.print(matriz[line][col] + " ");
-      }
-      System.out.println();
-    }
-    System.out.println();
-    for (int line = 0; line < dimen; line++) {
-        double yy = line - casaX;
+      double yy = line - casaX;
       for (int col = 0; col < dimen; col++) {
         double xx = col - casaY;
-        if (Math.sqrt(xx * xx + yy * yy) <= casaX){
-                matriz[line][col] = "**";
-        } 
+        double dist = Math.sqrt(xx * xx + yy * yy);
+        if (dist <= diam) {
+          if (matriz[line][col].startsWith("C")) {
+            System.out.println(matriz[line][col] + " a " + dist);
+          }
+        }
       }
     }
-
-    for (int line = 0; line < dimen; line++) {
-        for (int col = 0; col < dimen; col++) {
-          System.out.print(matriz[line][col] + " ");
-        }
-        System.out.println();
-      }
   }
 }
