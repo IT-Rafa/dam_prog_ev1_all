@@ -81,81 +81,122 @@ import java.util.Scanner;
 public class Ejercicio_8_Fuerzas_imperiales_reto_432 {
 
   private static Scanner sc = new Scanner(System.in);
-  final static char espacio = '.';
-  final static char meteorito = '*';
-  final static char entrada = 'S';
-  final static char salida = 'F';
+  static final char espacio = '.';
+  static final char meteorito = '*';
+  static final char entrada = 'S';
+  static final char salida = 'F';
+  static final char visitado = 'V';
 
   public static void main(String[] args) {
-    // Pedimos dimension del campo asteroides
-    String[] dimension = sc.nextLine().split(" ");
+    while (true) {
+      // Pedimos dimension del campo asteroides
+      String[] dimension;
+      if (sc.hasNextLine()) {
+        String input = sc.nextLine();
+        if (input.isEmpty()) {
+          return;
+        } else {
+          dimension = input.split(" ");
+        }
+      } else {
+        return;
+      }
 
-    // Pasamos a int
-    int f = Integer.parseInt(dimension[0]);
-    int c = Integer.parseInt(dimension[1]);
+      // Pasamos a int
+      int f = Integer.parseInt(dimension[0]);
+      int c = Integer.parseInt(dimension[1]);
 
-    // Creamos campo
-    char[][] campo = new char[f][c];
-    // Pedimos e introducimos campos y capturamos inicio
-    int initX = -1;
-    int initY = -1;
-    for (int i = 0; i < f; i++) {
-      String lineSt = sc.nextLine().toUpperCase();
-      for (int j = 0; j < c; j++) {
-        campo[i][j] = lineSt.charAt(j);
-        if (lineSt.charAt(j) == 'S') {
-          initX = i;
-          initY = j;
+      // Creamos campo
+      char[][] campo = new char[f][c];
+
+      // Pedimos e datos campo y marcamos inicio
+      int initX = -1;
+      int initY = -1;
+      for (int i = 0; i < f; i++) {
+        String lineSt = sc.nextLine().toUpperCase();
+        for (int j = 0; j < c; j++) {
+          campo[i][j] = lineSt.charAt(j);
+          if (lineSt.charAt(j) == 'S') {
+            initX = i;
+            initY = j;
+          }
         }
       }
-    }
+      // ENTRADA PARA PRUEBAS
+      /*
+        int f = 3;
+        int c = 3;
+        char[][] campo = {
+        { '.', 'S', '.' },
+        { '*', '*', '.' },
+        { 'F', '.', '.' },
+        };
+        int initX = 0;
+        int initY = 1;
 
-    // Mostramos campo
-    for (int i = 0; i < f; i++) {
-      for (int j = 0; j < c; j++) {
+      /* 
+        // Mostramos campo
+        for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++) {
         System.out.print(campo[i][j]);
-      }
-      System.out.println();
-    }
-    System.out.println();
-
-    // Localizamos salida
-    if (!hayCamino(initX, initY, campo)) {
-      System.out.println("no hay solucion");
-
-    } else {
-        // Mostramos salida
-      for (char[] fila : campo) {
-        for (char col : fila) {
-          System.out.print(col);
         }
-        System.out.println("");
+        System.out.println();
+        }
+        System.out.println();
+      */
+
+      // Localizamos salida
+      if (hayCamino(initX, initY, campo)) {
+        System.out.println("SI");
+      } else {
+        System.out.println("NO");
       }
     }
   }
-/**
- * Busca camino para llegar al final
- */
+
+  /**
+   * Busca camino para llegar al final
+   */
   static boolean hayCamino(int i, int j, char[][] laberinto) {
-    if (
-      i < 0 || i > laberinto.length - 1 || j < 0 || j > laberinto[i].length - 1
-    ) return false;
+    // System.out.print("Buscando [" + i + "," + j + "]");
+    if (i < 0 || i > laberinto.length - 1) {
+      // System.out.println("Fuera rango i False");
+      return false;
+    }
+    if (j < 0 || j > laberinto[i].length - 1) {
+      // System.out.println("Fuera rango j; False");
+      return false;
+    }
+    // System.out.print(" Valor " + laberinto[i][j] + " ");
     if (laberinto[i][j] == meteorito) {
+      // System.out.println("Meteorito; False");
       return false;
     }
-    if (laberinto[i][j] == espacio) {
+    if (laberinto[i][j] == visitado) {
+      // System.out.println("visitado; False");
       return false;
     }
+
     if (laberinto[i][j] == salida) {
+      // System.out.println("Salida; True");
       return true;
     }
 
-    laberinto[i][j] = espacio;
-    if (hayCamino(i - 1, j, laberinto)) return true; //vecino norte
-    if (hayCamino(i + 1, j, laberinto)) return true; //vecino sur
-    if (hayCamino(i, j + 1, laberinto)) return true; //vecino oeste
-    if (hayCamino(i, j - 1, laberinto)) return true; //vecino este
-    laberinto[i][j] = 'v';
+    laberinto[i][j] = visitado;
+    // System.out.println("\nBUSCANDO SALIDA [" + i + ", " + j + "]");
+    // Arriba
+    // System.out.println("ARRIBA [" + i + ", " + j + "]");
+    if (hayCamino(i - 1, j, laberinto)) return true;
+    // Abajo
+    // System.out.println("ABAJO [" + i + ", " + j + "]");
+    if (hayCamino(i + 1, j, laberinto)) return true;
+    // Izquierda
+    // System.out.println("IZQUIERDA [" + i + ", " + j + "]");
+    if (hayCamino(i, j - 1, laberinto)) return true;
+    // Derecha
+    // System.out.println("DERECHA [" + i + ", " + j + "]");
+    if (hayCamino(i, j + 1, laberinto)) return true;
+    laberinto[i][j] = meteorito;
     return false;
   }
 }
